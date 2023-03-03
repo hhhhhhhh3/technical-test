@@ -85,4 +85,74 @@ class PriceControllerITest {
         ResultActions response = mockMvc.perform(get("/price"));
         then(response.andExpect(status().isBadRequest()).andDo(print()));
     }
+
+    @DisplayName("Test 1: petición a las 10:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
+    @Test
+    void getPriceByDateAndBrandIdAndProductIdShouldReturnFilteredPriceTest1() throws Exception {
+        ResultActions response = mockMvc.perform(get("/price?date={date}&brandId={brandId}&productId={productId}",
+                                                     "2020-06-14T10:00:00",
+                                                     priceFilterDTO.brandId(),
+                                                     priceFilterDTO.productId()));
+        then(response.andExpect(status().isOk())
+                     .andExpect(jsonPath("$.priceList", is(1)))
+                     .andExpect(jsonPath("$.productId", is(priceFilterDTO.productId())))
+                     .andExpect(jsonPath("$.brandId", is(priceFilterDTO.brandId())))
+                     .andDo(print()));
+    }
+
+    @DisplayName("Test 2: petición a las 16:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
+    @Test
+    void getPriceByDateAndBrandIdAndProductIdShouldReturnFilteredPriceTest2() throws Exception {
+        ResultActions response = mockMvc.perform(get("/price?date={date}&brandId={brandId}&productId={productId}",
+                                                     "2020-06-14T16:00:00",
+                                                     priceFilterDTO.brandId(),
+                                                     priceFilterDTO.productId()));
+        then(response.andExpect(status().isOk())
+                     .andExpect(jsonPath("$.priceList", is(2)))
+                     .andExpect(jsonPath("$.productId", is(priceFilterDTO.productId())))
+                     .andExpect(jsonPath("$.brandId", is(priceFilterDTO.brandId())))
+                     .andDo(print()));
+    }
+
+    @DisplayName("Test 3: petición a las 21:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
+    @Test
+    void getPriceByDateAndBrandIdAndProductIdShouldReturnFilteredPriceTest3() throws Exception {
+        ResultActions response = mockMvc.perform(get("/price?date={date}&brandId={brandId}&productId={productId}",
+                                                     "2020-06-14T21:00:00",
+                                                     priceFilterDTO.brandId(),
+                                                     priceFilterDTO.productId()));
+        then(response.andExpect(status().isOk())
+                     .andExpect(jsonPath("$.priceList", is(1)))
+                     .andExpect(jsonPath("$.productId", is(priceFilterDTO.productId())))
+                     .andExpect(jsonPath("$.brandId", is(priceFilterDTO.brandId())))
+                     .andDo(print()));
+    }
+
+    @DisplayName("Test 4: petición a las 10:00 del día 15 del producto 35455 para la brand 1 (ZARA)")
+    @Test
+    void getPriceByDateAndBrandIdAndProductIdShouldReturnFilteredPriceTest4() throws Exception {
+        ResultActions response = mockMvc.perform(get("/price?date={date}&brandId={brandId}&productId={productId}",
+                                                     "2020-06-15T10:00:00",
+                                                     priceFilterDTO.brandId(),
+                                                     priceFilterDTO.productId()));
+        then(response.andExpect(status().isOk())
+                     .andExpect(jsonPath("$.priceList", is(3)))
+                     .andExpect(jsonPath("$.productId", is(priceFilterDTO.productId())))
+                     .andExpect(jsonPath("$.brandId", is(priceFilterDTO.brandId())))
+                     .andDo(print()));
+    }
+
+    @DisplayName("Test 5: petición a las 21:00 del día 16 del producto 35455 para la brand 1 (ZARA)")
+    @Test
+    void getPriceByDateAndBrandIdAndProductIdShouldReturnFilteredPriceTest5() throws Exception {
+        ResultActions response = mockMvc.perform(get("/price?date={date}&brandId={brandId}&productId={productId}",
+                                                     "2020-06-16T21:00:00",
+                                                     priceFilterDTO.brandId(),
+                                                     priceFilterDTO.productId()));
+        then(response.andExpect(status().isOk())
+                     .andExpect(jsonPath("$.priceList", is(4)))
+                     .andExpect(jsonPath("$.productId", is(priceFilterDTO.productId())))
+                     .andExpect(jsonPath("$.brandId", is(priceFilterDTO.brandId())))
+                     .andDo(print()));
+    }
 }

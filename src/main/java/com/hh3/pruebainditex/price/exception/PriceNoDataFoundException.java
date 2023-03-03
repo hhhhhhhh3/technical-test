@@ -1,4 +1,4 @@
-package com.hh3.pruebainditex.exception;
+package com.hh3.pruebainditex.price.exception;
 
 public final class PriceNoDataFoundException extends RuntimeException {
 

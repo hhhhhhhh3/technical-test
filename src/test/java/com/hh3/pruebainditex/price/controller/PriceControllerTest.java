@@ -1,6 +1,6 @@
 package com.hh3.pruebainditex.price.controller;
 
-import com.hh3.pruebainditex.exception.PriceNoDataFoundException;
+import com.hh3.pruebainditex.price.exception.PriceNoDataFoundException;
 import com.hh3.pruebainditex.price.dto.PriceDTO;
 import com.hh3.pruebainditex.price.dto.PriceFilterDTO;
 import com.hh3.pruebainditex.price.service.PriceServiceImpl;

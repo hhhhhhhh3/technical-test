@@ -1,4 +1,4 @@
-package com.hh3.pruebainditex.exception;
+package com.hh3.pruebainditex.price.exception;
 
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -41,7 +41,7 @@ public final class PriceExceptionHandler {
                                 .stream()
                                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                                 .collect(Collectors.toList());
-        body.put("errors", errors);
+        body.put("messages", errors);
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 }
